@@ -1,0 +1,43 @@
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: ['class'],
+  theme: {
+    extend: {
+      colors: {
+        background: 'hsl(var(--background-rgb) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground-rgb) / <alpha-value>)',
+        card: 'hsl(var(--card-rgb) / <alpha-value>)',
+        'card-foreground': 'hsl(var(--card-foreground-rgb) / <alpha-value>)',
+        popover: 'hsl(var(--popover-rgb) / <alpha-value>)',
+        'popover-foreground': 'hsl(var(--popover-foreground-rgb) / <alpha-value>)',
+        primary: 'hsl(var(--primary-rgb) / <alpha-value>)',
+        'primary-foreground': 'hsl(var(--primary-foreground-rgb) / <alpha-value>)',
+        secondary: 'hsl(var(--secondary-rgb) / <alpha-value>)',
+        'secondary-foreground': 'hsl(var(--secondary-foreground-rgb) / <alpha-value>)',
+        muted: 'hsl(var(--muted-rgb) / <alpha-value>)',
+        'muted-foreground': 'hsl(var(--muted-foreground-rgb) / <alpha-value>)',
+        accent: 'hsl(var(--accent-rgb) / <alpha-value>)',
+        'accent-foreground': 'hsl(var(--accent-foreground-rgb) / <alpha-value>)',
+        destructive: 'hsl(var(--destructive-rgb) / <alpha-value>)',
+        border: 'hsl(var(--border-rgb) / <alpha-value>)',
+        input: 'hsl(var(--input-rgb) / <alpha-value>)',
+        ring: 'hsl(var(--ring-rgb) / <alpha-value>)',
+        'chart-1': 'hsl(var(--chart-1-rgb) / <alpha-value>)',
+        'chart-2': 'hsl(var(--chart-2-rgb) / <alpha-value>)',
+        'chart-3': 'hsl(var(--chart-3-rgb) / <alpha-value>)',
+        'chart-4': 'hsl(var(--chart-4-rgb) / <alpha-value>)',
+        'chart-5': 'hsl(var(--chart-5-rgb) / <alpha-value>)',
+        sidebar: 'hsl(var(--sidebar-rgb) / <alpha-value>)',
+        'sidebar-foreground': 'hsl(var(--sidebar-foreground-rgb) / <alpha-value>)',
+        'sidebar-primary': 'hsl(var(--sidebar-primary-rgb) / <alpha-value>)',
+        'sidebar-primary-foreground': 'hsl(var(--sidebar-primary-foreground-rgb) / <alpha-value>)',
+        'sidebar-accent': 'hsl(var(--sidebar-accent-rgb) / <alpha-value>)',
+        'sidebar-accent-foreground': 'hsl(var(--sidebar-accent-foreground-rgb) / <alpha-value>)',
+        'sidebar-border': 'hsl(var(--sidebar-border-rgb) / <alpha-value>)',
+        'sidebar-ring': 'hsl(var(--sidebar-ring-rgb) / <alpha-value>)',
+      },
+    },
+  },
+} satisfies Config
