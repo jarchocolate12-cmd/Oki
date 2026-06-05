@@ -451,7 +451,7 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-:root {
+@theme inline {
     --font-sans: 'Geist', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
     --radius-sm: calc(var(--radius) - 4px);
@@ -509,14 +509,6 @@ body {
   --popover:           hsl(0 0% 100%);
   --popover-foreground: hsl(0 0% 9%);
 
-  /* RGB variants for Tailwind */
-  --background-rgb:        0 0% 100%;
-  --foreground-rgb:        0 0% 9%;
-  --card-rgb:              0 0% 100%;
-  --card-foreground-rgb:   0 0% 9%;
-  --popover-rgb:           0 0% 100%;
-  --popover-foreground-rgb: 0 0% 9%;
-
   /* Brand — deep slate */
   --primary:           hsl(0 0% 9%);
   --primary-foreground: hsl(0 0% 100%);
@@ -537,35 +529,12 @@ body {
   --input:   hsl(0 0% 92%);
   --ring:    hsl(0 0% 35%);
 
-  /* RGB variants */
-  --primary-rgb:           0 0% 9%;
-  --primary-foreground-rgb: 0 0% 100%;
-  --secondary-rgb:         0 0% 96%;
-  --secondary-foreground-rgb: 0 0% 9%;
-  --muted-rgb:             0 0% 96%;
-  --muted-foreground-rgb:  0 0% 45%;
-  --accent-rgb:            0 0% 96%;
-  --accent-foreground-rgb: 0 0% 9%;
-  --destructive-rgb:       0 84% 60%;
-  --border-rgb:  0 0% 90%;
-  --input-rgb:   0 0% 92%;
-  --ring-rgb:    0 0% 35%;
-
   /* Charts */
   --chart-1: hsl(0 0% 9%);
   --chart-2: hsl(217 91% 60%);
   --chart-3: hsl(160 84% 39%);
   --chart-4: hsl(38 92% 50%);
   --chart-5: hsl(271 91% 65%);
-
-  /* RGB variants for charts */
-  --chart-1-rgb: 0 0% 9%;
-  --chart-2-rgb: 217 91% 60%;
-  --chart-3-rgb: 160 84% 39%;
-  --chart-4-rgb: 38 92% 50%;
-  --chart-5-rgb: 271 91% 65%;
-
-
 
   /* Elevation helpers */
   --button-outline: rgba(0, 0, 0, 0.08);
@@ -616,14 +585,6 @@ body {
   --popover:           hsl(0 0% 6%);
   --popover-foreground: hsl(0 0% 96%);
 
-  /* RGB variants */
-  --background-rgb:        0 0% 4%;
-  --foreground-rgb:        0 0% 96%;
-  --card-rgb:              0 0% 6%;
-  --card-foreground-rgb:   0 0% 96%;
-  --popover-rgb:           0 0% 6%;
-  --popover-foreground-rgb: 0 0% 96%;
-
   /* Brand — soft white */
   --primary:           hsl(0 0% 96%);
   --primary-foreground: hsl(0 0% 4%);
@@ -644,34 +605,12 @@ body {
   --input:   hsl(0 0% 14%);
   --ring:    hsl(0 0% 55%);
 
-  /* RGB variants */
-  --primary-rgb:           0 0% 96%;
-  --primary-foreground-rgb: 0 0% 4%;
-  --secondary-rgb:         0 0% 12%;
-  --secondary-foreground-rgb: 0 0% 96%;
-  --muted-rgb:             0 0% 10%;
-  --muted-foreground-rgb:  0 0% 55%;
-  --accent-rgb:            0 0% 14%;
-  --accent-foreground-rgb: 0 0% 96%;
-  --destructive-rgb:       0 62% 55%;
-  --border-rgb:  0 0% 18%;
-  --input-rgb:   0 0% 14%;
-  --ring-rgb:    0 0% 55%;
-
   /* Charts */
   --chart-1: hsl(0 0% 96%);
   --chart-2: hsl(217 91% 60%);
   --chart-3: hsl(160 84% 39%);
   --chart-4: hsl(38 92% 50%);
   --chart-5: hsl(271 91% 65%);
-
-  /* RGB variants for charts */
-  --chart-1-rgb: 0 0% 96%;
-  --chart-2-rgb: 217 91% 60%;
-  --chart-3-rgb: 160 84% 39%;
-  --chart-4-rgb: 38 92% 50%;
-  --chart-5-rgb: 271 91% 65%;
-
 
   /* Elevation helpers */
   --button-outline: rgba(255, 255, 255, 0.08);
@@ -711,7 +650,7 @@ body {
 
 @layer base {
   * {
-    box-sizing: border-box;
+    @apply border-border outline-ring/50;
     /* scope transitions to interactive elements only — not every node */
   }
   button, a, input, select, textarea, [role="button"] {
@@ -729,17 +668,15 @@ body {
                 color 0.22s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground font-sans antialiased;
     background-image:
       radial-gradient(1200px 600px at 8% -10%, var(--bg-glow-1), transparent 60%),
       radial-gradient(900px 500px at 92% -12%, var(--bg-glow-2), transparent 58%);
     background-attachment: fixed;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "cv01" 1, "cv02" 1;
     font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     letter-spacing: 0.004em;
     line-height: 1.6;
@@ -817,18 +754,14 @@ body {
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-xl;
-    background-color: hsl(var(--card));
-    border: 1px solid hsl(var(--border) / 0.6);
+    @apply backdrop-blur-xl bg-card border border-border/60;
     box-shadow: var(--shadow-soft);
     transition: background-color 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
                 border-color 0.22s cubic-bezier(0.25, 0.1, 0.25, 1),
                 box-shadow 0.22s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   .glass-header {
-    @apply backdrop-blur-xl border-b;
-    background-color: hsl(var(--background) / 0.8);
-    border-color: hsl(var(--border) / 0.5);
+    @apply backdrop-blur-xl bg-background/80 border-b border-border/50;
     transition: background-color 0.28s cubic-bezier(0.25, 0.1, 0.25, 1),
                 border-color 0.22s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
